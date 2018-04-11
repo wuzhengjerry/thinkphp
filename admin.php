@@ -6,4 +6,3 @@
  * Time: 10:40
  */
 header("Location:./index.php?m=Admin");
-//header("Location:./index.php?m=Admin");

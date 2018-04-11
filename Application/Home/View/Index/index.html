@@ -1,17 +1,57 @@
-<style type="text/css">
-    *{ padding: 0; margin: 0; }
-    div{ padding: 4px 48px;}
-    body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px}
-    h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; }
-    p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}
-</style>
-<div style="padding: 24px 48px;">
-    <h1>:)</h1>
-    <p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本1111 V{$Think.version}
-</div>
-<script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js">
+<extend name="Public:base" />
 
-</script><thinkad id="ad_55e75dfae343f5a1">
+<block name="title" >用户中心</block>
 
-</thinkad>
-<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>
+<block name="body" >
+  <!-- 顶部提示 starp -->
+  <div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户中心</strong> / <small>Personal Center</small></div>
+  </div>
+  <!-- 顶部提示 end --> 
+  <!-- 主体区域 starp -->
+  <div class="am-margin">
+    <div class="am-tab-panel am-fade am-in am-active">
+      <div class="am-g am-margin-top">
+        <div class="am-u-sm-4 am-u-md-2 am-text-right">昵称[用户名]</div>
+        <div class="am-u-sm-8 am-u-md-4 am-u-end">
+          {$UserInfo['nickname']} [{$UserInfo['username']}]
+        </div>
+      </div>
+      <div class="am-g am-margin-top">
+        <div class="am-u-sm-4 am-u-md-2 am-text-right">积分</div>
+        <div class="am-u-sm-8 am-u-md-4 am-u-end">
+          {$UserInfo['point']}
+        </div>
+      </div>
+      <div class="am-g am-margin-top">
+        <div class="am-u-sm-4 am-u-md-2 am-text-right">余额</div>
+        <div class="am-u-sm-8 am-u-md-4 am-u-end">
+          ￥ {$UserInfo['amount']} 元
+        </div>
+      </div>
+      <div class="am-g am-margin-top">
+        <div class="am-u-sm-4 am-u-md-2 am-text-right">邮箱</div>
+        <div class="am-u-sm-8 am-u-md-4 am-u-end">
+          {$UserInfo['email']}
+        </div>
+      </div>
+      <div class="am-g am-margin-top">
+        <div class="am-u-sm-4 am-u-md-2 am-text-right">上次登录IP / 时间</div>
+        <div class="am-u-sm-8 am-u-md-4 am-u-end">
+          <if condition="$UserInfo['last_login_time'] neq 0">
+          	{$UserInfo['last_login_ip']} / {$UserInfo['last_login_time']|date='Y-m-d H:i:s',###}
+          <else />
+          	第一次登录
+          </if>
+        </div>
+      </div>
+      <div class="am-g am-margin-top">
+        <div class="am-u-sm-4 am-u-md-2 am-text-right">备注</div>
+        <div class="am-u-sm-8 am-u-md-6 am-u-end">
+          {$UserInfo['remark']}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 主体区域 end --> 
+</block>
